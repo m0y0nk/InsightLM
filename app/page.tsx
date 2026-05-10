@@ -85,7 +85,7 @@ export default function Home() {
         >
           ☰
         </button>
-        <span className="mobile-title">DocChat</span>
+        <span className="mobile-title">InsightLM</span>
       </div>
 
       {/* Sidebar */}
@@ -93,7 +93,7 @@ export default function Home() {
         <div className="sidebar-header">
           <div className="sidebar-logo">
             <div className="sidebar-logo-icon">💬</div>
-            <h1>DocChat</h1>
+            <h1>InsightLM</h1>
           </div>
           <div className="sidebar-subtitle">
             RAG-Powered Document Q&A

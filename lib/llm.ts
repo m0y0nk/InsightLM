@@ -11,7 +11,7 @@ import type { SearchResult } from "./vectorStore";
 
 const GENERATION_MODEL = "gemini-2.5-flash";
 
-const SYSTEM_PROMPT = `You are a document Q&A assistant called DocChat. Your ONLY job is to answer questions using the provided document context.
+const SYSTEM_PROMPT = `You are a document Q&A assistant called InsightLM. Your ONLY job is to answer questions using the provided document context.
 
 STRICT RULES:
 1. ONLY answer using information found in the provided context chunks below.

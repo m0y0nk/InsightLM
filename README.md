@@ -1,4 +1,4 @@
-# DocChat — RAG-Powered Document Q&A
+# InsightLM — RAG-Powered Document Q&A
 
 A full-stack RAG (Retrieval-Augmented Generation) application where users can upload documents (PDF/TXT) and have intelligent, grounded conversations with their content. Built as a modern alternative to Google NotebookLM.
 
@@ -11,7 +11,7 @@ A full-stack RAG (Retrieval-Augmented Generation) application where users can up
 
 - **📄 Document Upload** — Upload PDFs and text files with drag-and-drop
 - **✂️ Smart Chunking** — Recursive text splitting that preserves semantic boundaries
-- **🧠 Embedding** — Google Gemini `text-embedding-004` (768 dimensions)
+- **🧠 Embedding** — Google Gemini `gemini-embedding-2` (3072 dimensions)
 - **💾 Vector Storage** — Qdrant Cloud for fast similarity search
 - **💬 Grounded Chat** — Streaming AI responses grounded in document content
 - **📎 Source Citations** — See which document chunks were used for each answer
@@ -27,7 +27,7 @@ User uploads PDF/TXT
   ┌─────────────────┐
   │  1. Parse (pdf-parse)
   │  2. Chunk (recursive splitter)
-  │  3. Embed (Gemini text-embedding-004)
+  │  3. Embed (Gemini gemini-embedding-2)
   │  4. Store (Qdrant Cloud)
   └─────────────────┘
 
@@ -50,7 +50,7 @@ User asks a question
 | **Framework** | Next.js 15 (App Router) |
 | **Language** | TypeScript |
 | **PDF Parsing** | pdf-parse |
-| **Embeddings** | Google Gemini text-embedding-004 |
+| **Embeddings** | Google Gemini gemini-embedding-2 |
 | **Vector DB** | Qdrant Cloud |
 | **LLM** | Google Gemini 2.0 Flash |
 | **Styling** | Vanilla CSS (custom design system) |
@@ -89,8 +89,8 @@ The chunker uses a **recursive approach** that tries to split text at the most s
 
 1. **Clone the repository:**
    ```bash
-   git clone https://github.com/YOUR_USERNAME/rag-app.git
-   cd rag-app
+   git clone https://github.com/YOUR_USERNAME/insight-lm.git
+   cd insight-lm
    ```
 
 2. **Install dependencies:**
@@ -120,7 +120,7 @@ The chunker uses a **recursive approach** that tries to split text at the most s
 ## 📁 Project Structure
 
 ```
-rag-app/
+insight-lm/
 ├── app/
 │   ├── layout.tsx              # Root layout with SEO metadata
 │   ├── page.tsx                # Main application page

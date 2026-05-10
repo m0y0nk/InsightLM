@@ -92,7 +92,7 @@ export default function MessageBubble({ message }: MessageBubbleProps) {
       </div>
       <div className="message-content">
         <div className="message-sender">
-          {message.role === "user" ? "You" : "DocChat"}
+          {message.role === "user" ? "You" : "InsightLM"}
         </div>
         {message.role === "ai" ? (
           <div className="message-text">

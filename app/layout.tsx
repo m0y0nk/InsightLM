@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "DocChat — AI Document Q&A | Chat with your PDFs",
+  title: "InsightLM — AI Document Q&A | Chat with your PDFs",
   description:
     "Upload any PDF or text document and have an intelligent conversation with it. Powered by RAG (Retrieval-Augmented Generation) for accurate, grounded answers from your documents.",
   keywords: [
