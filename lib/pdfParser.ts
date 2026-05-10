@@ -28,7 +28,7 @@ async function parsePDF(buffer: Buffer, fileName: string): Promise<ParsedDocumen
   }
 
   if (!PDFParse) {
-    const pdfParseModule = await import("pdf-parse");
+    const pdfParseModule = (await import("pdf-parse")) as any;
     PDFParse = pdfParseModule.PDFParse || pdfParseModule.default?.PDFParse || pdfParseModule.default;
   }
 
