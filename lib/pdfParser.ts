@@ -5,7 +5,7 @@
  * Uses `pdf-parse` (v2) for PDF extraction.
  */
 
-import { PDFParse } from "pdf-parse";
+let PDFParse: any;
 
 export interface ParsedDocument {
   text: string;
@@ -21,16 +21,40 @@ export interface ParsedDocument {
  * Extracts text from a PDF buffer.
  */
 async function parsePDF(buffer: Buffer, fileName: string): Promise<ParsedDocument> {
-  const pdf = new PDFParse({ data: new Uint8Array(buffer) });
-  const result = await pdf.getText();
+  // Polyfill DOMMatrix for Next.js Turbopack Node.js runtime
+  if (typeof global !== "undefined" && typeof global.DOMMatrix === "undefined") {
+    // pdfjs-dist requires DOMMatrix to be defined
+    global.DOMMatrix = class DOMMatrix {} as any;
+  }
+
+  if (!PDFParse) {
+    const pdfParseModule = await import("pdf-parse");
+    PDFParse = pdfParseModule.PDFParse || pdfParseModule.default?.PDFParse || pdfParseModule.default;
+  }
+
+  // Create an instance using PDFParse class if available, otherwise just use the exported function if it's pdf-parse v1
+  let text = "";
+  let total = 0;
+  
+  if (typeof PDFParse === "function" && !PDFParse.prototype?.getText) {
+    // Fallback for pdf-parse v1.x behavior if needed
+    const result = await PDFParse(buffer);
+    text = result.text;
+    total = result.numpages;
+  } else {
+    const pdf = new PDFParse({ data: new Uint8Array(buffer) });
+    const result = await pdf.getText();
+    text = result.text;
+    total = result.total;
+  }
 
   return {
-    text: result.text.trim(),
+    text: text.trim(),
     metadata: {
       fileName,
       fileType: "pdf",
-      pageCount: result.total,
-      charCount: result.text.length,
+      pageCount: total,
+      charCount: text.length,
     },
   };
 }
