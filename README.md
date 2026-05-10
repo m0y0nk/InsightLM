@@ -24,23 +24,23 @@ User uploads PDF/TXT
         ↓
   [Next.js API Route]
         ↓
-  ┌─────────────────┐
-  │  1. Parse (pdf-parse)
-  │  2. Chunk (recursive splitter)
-  │  3. Embed (Gemini gemini-embedding-2)
-  │  4. Store (Qdrant Cloud)
-  └─────────────────┘
+  ┌───────────────────────────────────────┐
+  │  1. Parse (pdf-parse)                 |
+  │  2. Chunk (recursive splitter)        |
+  │  3. Embed (Gemini gemini-embedding-2) |
+  │  4. Store (Qdrant Cloud)              |
+  └───────────────────────────────────────┘
 
 User asks a question
         ↓
   [Next.js API Route]
         ↓
-  ┌─────────────────┐
-  │  1. Embed query (Gemini)
-  │  2. Search (Qdrant top-5)
-  │  3. Generate (Gemini 2.0 Flash + context)
-  │  4. Stream response to client
-  └─────────────────┘
+  ┌───────────────────────────────────────────┐
+  │  1. Embed query (Gemini)                  |
+  │  2. Search (Qdrant top-5)                 |
+  │  3. Generate (Gemini 2.0 Flash + context) |
+  │  4. Stream response to client             |
+  └───────────────────────────────────────────┘
 ```
 
 ## 📦 Tech Stack
@@ -89,7 +89,7 @@ The chunker uses a **recursive approach** that tries to split text at the most s
 
 1. **Clone the repository:**
    ```bash
-   git clone https://github.com/YOUR_USERNAME/insight-lm.git
+   git clone https://github.com/m0y0nk/InsightLM.git
    cd insight-lm
    ```
 
